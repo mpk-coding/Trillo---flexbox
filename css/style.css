@@ -32,9 +32,10 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh; }
 
-.logo {
-  height: 3.25rem;
-  margin-left: 3rem; }
+.preload *,
+.preload *::before,
+.preload *::after {
+  transition: none !important; }
 
 .search {
   flex: 0 0 40%;
@@ -119,6 +120,59 @@ body {
   .user-nav__user-name {
     margin-left: 1rem; }
 
+.side-nav {
+  font-size: 1.4rem;
+  list-style-type: none;
+  margin-top: 3.5rem; }
+  .side-nav__item {
+    position: relative; }
+    .side-nav__item:not(:first-child) {
+      margin-top: .5rem; }
+    .side-nav__item:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background-color: var(--color-primary);
+      transition: transform 0.2s ease-out, width 0.2s cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s ease-out;
+      transform: scaleY(0);
+      z-index: 1; }
+    .side-nav__item:hover::before, .side-nav__item--active::before {
+      transform: scaleY(1);
+      width: 100%; }
+    .side-nav__item:active::before {
+      background-color: var(--color-primary-light); }
+  .side-nav__link:link, .side-nav__link:visited {
+    color: var(--color-grey-light-1);
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    transition: all .2s ease-out;
+    position: relative;
+    z-index: 2; }
+    .side-nav__link:link > span, .side-nav__link:visited > span {
+      margin-left: 2rem; }
+  .side-nav__icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: currentColor; }
+
+.legal {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2.5rem;
+  color: var(--color-grey-light-3); }
+
+.logo {
+  height: 3.25rem;
+  margin-left: 3rem; }
+
 .layout {
   max-width: 120rem;
   margin: 8rem auto;
@@ -141,8 +195,12 @@ body {
 
 .sidebar {
   background-color: var(--color-grey-dark-1);
-  flex: 0 0 18%; }
+  flex: 0 0 18%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between; }
 
 .hotel-view {
-  background-color: #fff;
-  flex: 1; }
+  background-color: teal;
+  flex: 1;
+  height: 80rem; }

@@ -7,9 +7,13 @@
 @import 'base/typography';
 @import 'base/utilities';
 
-@import 'components/component';
+@import 'components/search';
+@import 'components/user-nav';
+@import 'components/side-nav';
+@import 'components/legal';
 
 @import 'layout/header';
 @import 'layout/layout';
+@import 'layout/content';
 
 @import 'pages/home';
