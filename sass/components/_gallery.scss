@@ -1,0 +1,15 @@
+.gallery {
+  display: flex;
+
+  &__item {
+    display: flex;
+    flex: 1 1 auto;
+    background-color: #fff;
+  }
+
+  &__photo {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
