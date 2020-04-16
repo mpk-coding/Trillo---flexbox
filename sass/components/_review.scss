@@ -1,0 +1,79 @@
+.review {
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+
+  &:not(:first-of-type) {
+    margin-top: 3.5rem;
+  }
+//////////////////////////////////////////////////////////////
+
+  &::before {
+    content: "\201C";
+    position: absolute;
+    top: -2.75rem;
+    left: -1rem;
+    font-size: 20rem;
+    line-height: 1;
+    color: var(--color-grey-light-2);
+    font-family: sans-serif;
+    z-index: 1;
+  }
+//////////////////////////////////////////////////////////////
+
+  &__text {
+    position: relative;
+    z-index: 10;
+  }
+//////////////////////////////////////////////////////////////
+
+  &__user {
+    display: flex;
+    margin-top: 2rem;
+    align-items: center;
+  }
+//////////////////////////////////////////////////////////////
+
+  &__photo {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 50%;
+  }
+//////////////////////////////////////////////////////////////
+
+  &__user-box {
+    display: flex;
+    flex-flow: column;
+    margin-left: 1rem;
+  }
+//////////////////////////////////////////////////////////////
+
+  &__user-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+//////////////////////////////////////////////////////////////
+
+  &__user-date {
+    margin-top: .4rem;
+    font-size: 1rem;
+    color: var(--color-grey-dark-3);
+  }
+//////////////////////////////////////////////////////////////
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    color: var(--color-primary);
+    font-weight: 300;
+    font-size: 2.2rem;
+  }
+//////////////////////////////////////////////////////////////
+
+}
+//------------------------------------------------------------

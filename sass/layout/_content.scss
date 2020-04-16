@@ -16,6 +16,7 @@
   padding: 4.5rem;
   background-color: var(--color-grey-light-1);
   border-bottom: var(--border-light-2);
+  font-size: 1.4rem;
 }
 //------------------------------------------------------------
 .description {
@@ -26,8 +27,14 @@
 }
 //------------------------------------------------------------
 .user-reviews {
-  background-color: teal;
   flex: 1;
   margin-left: 4.5rem;
+  display: flex;
+  flex-flow: column;
+
+  button {
+    margin-top: 2rem;
+    align-self: center;
+  }
 }
 //------------------------------------------------------------
