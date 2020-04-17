@@ -2,6 +2,10 @@
   padding: 3.5rem 0;
   text-align: center;
 
+  @media only screen and (max-width: $bp-900) {
+    padding: 3rem;
+  }
+
   &__book-now {
     text-transform: uppercase;
     font-size: 2rem;

@@ -9,6 +9,10 @@
   justify-content: center;
   align-items: center;
 
+  @media only screen and (max-width: $bp-500) {
+    flex-flow: column;
+  }
+
   &__item {
     position: relative;
     flex: 0 0 50%;

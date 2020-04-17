@@ -11,26 +11,54 @@
   flex: 1;
 }
 //------------------------------------------------------------
+
 .detail {
   display: flex;
   padding: 4.5rem;
   background-color: var(--color-grey-light-1);
   border-bottom: var(--border-light-2);
   font-size: 1.4rem;
+
+  @media only screen and (max-width: $bp-900) {
+    padding: 3rem;
+  }
+
+  @media only screen and (max-width: $bp-600) {
+    flex-flow: column;
+  }
 }
 //------------------------------------------------------------
+
 .description {
   background-color: #fff;
   box-shadow: var(--shadow-light);
   padding: 3rem;
   flex: 0 0 60%;
+
+  @media only screen and (max-width: $bp-900) {
+    padding: 2rem;
+  }
+
+  @media only screen and (max-width: $bp-600) {
+    flex: 1;
+  }
 }
 //------------------------------------------------------------
+
 .user-reviews {
   flex: 1;
   margin-left: 4.5rem;
   display: flex;
   flex-flow: column;
+
+  @media only screen and (max-width: $bp-900) {
+    margin-left: 3rem;
+  }
+
+  @media only screen and (max-width: $bp-600) {
+    margin: 0;
+    margin-top: 3rem;
+  }
 
   button {
     margin-top: 2rem;
