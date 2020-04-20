@@ -1,15 +1,48 @@
 .gallery {
+  font-size: 100%;
+  $captionFontSize: 1.25rem;
   display: flex;
 
   &__item {
     display: flex;
-    flex: 1 1 auto;
+    flex: 0 0 calc(100% / 3);
     background-color: #fff;
+    position: relative;
+    padding-top: calc(20% - #{$captionFontSize} - 2.5rem);
+
+      &:hover .gallery__caption {
+        opacity: .9;
+      }
   }
 
   &__photo {
-    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     height: auto;
+    backface-visibility: hidden;
+  }
+
+  &__caption {
+    background: linear-gradient(to left, rgba(0,0,0,.3), transparent);
+    color: #fff;
+    font-size: $captionFontSize;
+    line-height: 1;
+    display: flex;
+    flex: 1 0 auto;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    bottom: 1.25rem;
+    padding: 1.25rem 0;
+    padding-right: 2rem;
+    text-shadow: 1px 1px 1px black;
+    opacity: 0;
+    transition: all .2s ease-out;
+
+    @media (hover: none) {
+      opacity: .9;
+    }
   }
 }

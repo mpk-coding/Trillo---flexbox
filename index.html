@@ -17,13 +17,22 @@
     <div class="layout">
         <header class="header">
             <img src="img/logo.png" alt="trillo logo" class="logo">
-            <form action="#" class="search">
-                <input type="text" class="search__input" placeholder="Search hotels">
-                <button class="search__button">
+            <form action="#" class="search" id="searchBar">
+                    <input type="search" autocomplete="off" class="search__input" placeholder="Search hotels" name="search" id="searchField">
+                <button class="search__button" type="submit" for="search">
                     <svg class="search__icon">
                         <use href="fonts/entypo/sprite.svg#icon-magnifying-glass"></use>
                     </svg>
                 </button>
+                <div class="search__suggested">
+                    <ul class="search__list" id="searchList">
+                        <li><a class="search__list-item" target="_blank" href="#1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi deleniti officia unde est esse repellat dignissimos atque deserunt impedit. Iusto veniam hic ab sunt tempore quasi quo odit natus corrupti.</a></li>
+                        <li><a class="search__list-item" target="_blank" href="#2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi similique expedita sint est autem perspiciatis, quam a aperiam assumenda et vel, itaque vitae dolorem. Iusto ea incidunt tenetur sunt inventore.</a></li>
+                        <li><a class="search__list-item" target="_blank" href="#3">Lorem ipsum.</a></li>
+                        <li><a class="search__list-item" target="_blank" href="#4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis ullam soluta nobis porro error, exercitationem aliquam nisi, illum necessitatibus nihil repellendus, quaerat architecto maxime iusto odit molestiae officiis accusantium a.</a></li>
+                        <li><a class="search__list-item" target="_blank" href="#5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga error labore optio dolorem? Ab nam, facere quibusdam quis ullam vero quasi distinctio praesentium ipsam libero, quidem pariatur sequi animi eos.</a></li>
+                    </ul>
+                </div>
             </form>
 
             <nav class="user-nav">
@@ -87,12 +96,15 @@
                 <div class="gallery">
                     <figure class="gallery__item">
                         <img src="img//hotel-1.jpg" alt="Photo of hotel 1" class="gallery__photo">
+                        <figcaption class="gallery__caption">Something 1</figcaption>
                     </figure>
                     <figure class="gallery__item">
                         <img src="img/hotel-2.jpg" alt="Photo of hotel 2" class="gallery__photo">
+                        <figcaption class="gallery__caption">Something 2</figcaption>
                     </figure>
                     <figure class="gallery__item">
                         <img src="img/hotel-3.jpg" alt="Photo of hotel 3" class="gallery__photo">
+                        <figcaption class="gallery__caption">Something 3</figcaption>
                     </figure>
                 </div>
 

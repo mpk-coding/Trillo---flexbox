@@ -26,21 +26,23 @@
       width: 1.6rem;
       height: 1.6rem;
 
-      /* fallback
+      // fallback
       background-image: url('../fonts/entypo/svg/chevron-right.svg');
       background-origin: border-box;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      */
 
       //mask
-      background-color: var(--color-primary);
-      -webkit-mask-image: url('../fonts/entypo/svg/chevron-right.svg');
-      -webkit-mask-size: cover;
-      -webkit-mask-origin: border-box;
-      -webkit-mask-position: center;
-      -webkit-mask-repeat: no-repeat;
+      @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+        background-color: var(--color-primary);
+        background-image: none;
+        -webkit-mask-image: url('../fonts/entypo/svg/chevron-right.svg');
+        -webkit-mask-size: cover;
+        -webkit-mask-origin: border-box;
+        -webkit-mask-position: center;
+        -webkit-mask-repeat: no-repeat;
+      }
     }
   }
 //////////////////////////////////////////////////////////////
