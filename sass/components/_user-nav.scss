@@ -2,35 +2,35 @@
   display: flex;
   align-items: stretch;
   align-self: stretch;
-//////////////////////////////////////////////////////////////
+  position: relative;
+  //////////////////////////////////////////////////////////////
 
   & > * {
     padding: 0 2rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    transition: all .2s ease-out;
+    transition: all 0.2s ease-out;
   }
 
   & > *:hover {
     background-color: var(--color-grey-light-2);
   }
-//////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////
 
   &__icon-box {
-    position: relative;
   }
-//////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////
 
   &__icon {
     height: 2.25rem;
     width: 2.25rem;
     fill: var(--color-grey-dark-2);
   }
-//////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////
 
   &__notification {
-    font-size: .8rem;
+    font-size: 0.8rem;
     height: 1.75rem;
     width: 1.75rem;
     border-radius: 50%;
@@ -39,15 +39,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    right: 10%;
-    top: 40%;
+    position: relative;
+    right: 0;
+    top: 0;
     transform: translate(-50%, -50%);
   }
-//////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////
 
   &__user {
-
     &-photo {
       height: 3.75rem;
       border-radius: 50%;
@@ -57,5 +56,43 @@
       margin-left: 1rem;
     }
   }
+  //////////////////////////////////////////////////////////////
+  &__menu,
+  &__messages {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 50rem;
+    background-color: #fff;
+    top: 100%;
+    right: 0;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: -1;
+      box-shadow: var(--shadow-dark);
+    }
+  }
+
+  //rounded corner borders on dropdown + ::before
+  &__menu,
+  &__messages,
+  &__menu::before,
+  &__messages::before {
+    @include roundedBorders(
+      $br: #{$rounded-border-light},
+      $bl: #{$rounded-border-light}
+    );
+  }
+  //Show dropdowns on hover
+  &__user:hover &__menu,
+  &__icon-box-messages:hover &__messages {
+    display: flex;
+  }
+  //////////////////////////////////////////////////////////////
 }
 //------------------------------------------------------------

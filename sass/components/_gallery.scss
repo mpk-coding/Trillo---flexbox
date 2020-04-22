@@ -10,9 +10,9 @@
     position: relative;
     padding-top: calc(20% - #{$captionFontSize} - 2.5rem);
 
-      &:hover .gallery__caption {
-        opacity: .9;
-      }
+    &:hover .gallery__caption {
+      opacity: 0.9;
+    }
   }
 
   &__photo {
@@ -25,7 +25,7 @@
   }
 
   &__caption {
-    background: linear-gradient(to left, rgba(0,0,0,.3), transparent);
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.3), transparent);
     color: #fff;
     font-size: $captionFontSize;
     line-height: 1;
@@ -39,10 +39,11 @@
     padding-right: 2rem;
     text-shadow: 1px 1px 1px black;
     opacity: 0;
-    transition: all .2s ease-out;
+    transition: all 0.2s ease-out;
 
     @media (hover: none) {
-      opacity: .9;
+      opacity: 0.9;
     }
   }
 }
+//------------------------------------------------------------

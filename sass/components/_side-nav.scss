@@ -6,9 +6,8 @@
   @media only screen and (max-width: $bp-900) {
     margin: 0;
     display: flex;
-
   }
-//////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////
 
   &__item {
     position: relative;
@@ -20,40 +19,41 @@
     }
 
     &:not(:first-child) {
-      margin-top: .5rem;
+      margin-top: 0.5rem;
 
       @media only screen and (max-width: $bp-900) {
         margin: 0;
       }
     }
 
-//hover state pink bg
+    //hover state pink bg
     &:before {
       content: "";
       display: block;
       position: absolute;
       top: 0;
       left: 0;
-      width:3px;
+      width: 3px;
       height: 100%;
       background-color: var(--color-primary);
-      transition: transform .2s ease-out, width .2s cubic-bezier(1,0,0,1) .2s, background-color .1s ease-out;
+      transition: transform 0.2s ease-out,
+        width 0.2s cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s ease-out;
       transform: scaleY(0);
       z-index: 1;
     }
-//animation of the pink hover bg 
+    //animation of the pink hover bg
     &:hover::before,
     &--active::before {
       transform: scaleY(1);
       width: 100%;
     }
-//onclick pinkpier bg
+    //onclick pinkpier bg
     &:active::before {
       background-color: var(--color-primary-light);
     }
   }
 
-//////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////
   &__link:link,
   &__link:visited {
     color: var(--color-grey-light-1);
@@ -63,13 +63,13 @@
     justify-content: flex-start;
     align-items: center;
     padding: 1.5rem 3rem;
-    transition: all .2s ease-out;
+    transition: all 0.2s ease-out;
     position: relative;
     z-index: 2;
     width: 100%;
 
     @media only screen and (max-width: $bp-900) {
-      padding: 2.5rem .5rem;
+      padding: 2.5rem 0.5rem;
       justify-content: center;
     }
 
@@ -85,11 +85,11 @@
 
       @media only screen and (max-width: $bp-600) {
         margin: 0;
-        margin-top: .6rem;
+        margin-top: 0.6rem;
       }
     }
   }
-//////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////
 
   &__icon {
     width: 1.75rem;

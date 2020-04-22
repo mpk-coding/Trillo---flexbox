@@ -3,3 +3,30 @@
   font-weight: 100;
   font-size: inherit;
 }
+//------------------------------------------------------------
+
+//Mixin for adding rounded corner borders
+//@ $tl - border-top-left-radius;
+//@ $tr - border-top-right-radius;
+//@ $br - border-bottom-right-radius;
+//@ $bl - border-bottom-left-radius;
+@mixin roundedBorders($tl: 0, $tr: 0, $br: 0, $bl: 0) {
+  border-top-left-radius: $tl;
+  border-top-right-radius: $tr;
+  border-bottom-right-radius: $br;
+  border-bottom-left-radius: $bl;
+}
+
+//------------------------------------------------------------
+//Mixin for replacing focus outline with border
+//@ $inset - type inset for an inset border
+//@ $inset - leave empty for an outset border
+@mixin focusBorder($inset: "") {
+  outline: none;
+
+  @if $inset != "" {
+    box-shadow: inset #{$focus-border};
+  } @else {
+    box-shadow: #{$inset} #{$focus-border};
+  }
+}
