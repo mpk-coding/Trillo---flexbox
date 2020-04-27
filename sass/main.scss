@@ -1,26 +1,29 @@
-@import 'abstracts/functions';
-@import 'abstracts/mixins';
-@import 'abstracts/variables';
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
 
-@import 'base/base';
-@import 'base/animations';
-@import 'base/typography';
-@import 'base/utilities';
+@import "base/base";
+@import "base/animations";
+@import "base/typography";
+@import "base/utilities";
 
-@import 'components/button';
-@import 'components/list';
-@import 'components/recommend';
-@import 'components/gallery';
-@import 'components/overview';
-@import 'components/search';
-@import 'components/user-nav';
-@import 'components/side-nav';
-@import 'components/legal';
-@import 'components/review';
-@import 'components/cta';
+@import "components/button";
+@import "components/list";
+@import "components/recommend";
+@import "components/gallery";
+@import "components/overview";
+@import "components/search";
+@import "components/user-nav";
+@import "components/user-menu";
+@import "components/user-messages";
+@import "components/side-nav";
+@import "components/legal";
+@import "components/review";
+@import "components/cta";
+@import "components/carousel";
 
-@import 'layout/header';
-@import 'layout/layout';
-@import 'layout/content';
+@import "layout/header";
+@import "layout/layout";
+@import "layout/content";
 
-@import 'pages/home';
+@import "pages/home";

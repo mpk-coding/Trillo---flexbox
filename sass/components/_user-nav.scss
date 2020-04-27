@@ -3,6 +3,7 @@
   align-items: stretch;
   align-self: stretch;
   position: relative;
+  background-color: #fff;
   //////////////////////////////////////////////////////////////
 
   & > * {
@@ -57,40 +58,14 @@
     }
   }
   //////////////////////////////////////////////////////////////
-  &__menu,
-  &__messages {
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 50rem;
-    background-color: #fff;
-    top: 100%;
-    right: 0;
 
-    &::before {
-      content: "";
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: relative;
-      z-index: -1;
-      box-shadow: var(--shadow-dark);
-    }
-  }
-
-  //rounded corner borders on dropdown + ::before
-  &__menu,
-  &__messages,
-  &__menu::before,
-  &__messages::before {
-    @include roundedBorders(
-      $br: #{$rounded-border-light},
-      $bl: #{$rounded-border-light}
-    );
-  }
   //Show dropdowns on hover
-  &__user:hover &__menu,
-  &__icon-box-messages:hover &__messages {
+  //@ components/user-menu.scss
+  //@ components/user-messages.scss
+  &__user:hover .user-menu,
+  &__icon-box-messages:hover .user-messages,
+  &__user:focus-within .user-menu,
+  &__icon-box-messages:focus-within .user-messages {
     display: flex;
   }
   //////////////////////////////////////////////////////////////

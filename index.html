@@ -49,26 +49,38 @@
             </form>
 
             <nav class="user-nav">
-                <div class="user-nav__icon-box">
+                <div class="user-nav__icon-box" tabindex="0">
                     <svg class="user-nav__icon">
                         <use href="fonts/entypo/sprite.svg#icon-bookmark"></use>
                     </svg>
                     <span class="user-nav__notification">7</span>
                 </div>
-                <div class="user-nav__icon-box user-nav__icon-box-messages">
+                <div class="user-nav__icon-box user-nav__icon-box-messages" tabindex="0">
                     <svg class="user-nav__icon">
                         <use href="fonts/entypo/sprite.svg#icon-chat"></use>
                     </svg>
                     <span class="user-nav__notification">13</span>
-                    <div class="user-nav__messages">
+                    <div class="user-messages">
 
                     </div>
                 </div>
-                <div class="user-nav__user">
+                <div class="user-nav__user" tabindex="0">
                     <img src="img/user.jpg" alt="User photo" class="user-nav__user-photo">
                     <span class="user-nav___user-name">Jonas</span>
-                    <div class="user-nav__menu">
-
+                    <div class="user-menu">
+                        <div class="user-menu__container">
+                            <ul class="user-menu__list">
+                                <li class="user-menu__list-item" tabindex="0">option</li>
+                                <li class="user-menu__list-item" tabindex="0">option</li>
+                                <li class="user-menu__list-item" tabindex="0">option</li>
+                                <li class="user-menu__list-item" tabindex="0">option</li>
+                                <li class="user-menu__list-item" tabindex="0">option</li>
+                                <li class="user-menu__list-item" tabindex="0">option</li>
+                                <li class="user-menu__list-item" tabindex="0">option</li>
+                                <li class="user-menu__list-item" tabindex="0">option</li>
+                            </ul>
+                            <button class="btn-inline" tabindex="0">Logout</button>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -125,6 +137,52 @@
                         <img src="img/hotel-3.jpg" alt="Photo of hotel 3" class="gallery__photo">
                         <figcaption class="gallery__caption">Something 3</figcaption>
                     </figure>
+                </div>
+                <div class="carousel">
+
+                    <input type="radio" id="carousel__toggle--1" class="carousel__radio carousel__radio--1"
+                        name="carousel__pagination" checked>
+                    <label for="carousel__toggle--1" class="carousel__label carousel__label--1">
+                        <span class="carousel__btn carousel__btn--1 btn--green">&nbsp;</span>
+                    </label>
+
+                    <input type="radio" id="carousel__toggle--2" class="carousel__radio carousel__radio--2"
+                        name="carousel__pagination">
+                    <label for="carousel__toggle--2" class="carousel__label carousel__label--2">
+                        <span class="carousel__btn carousel__btn--2 btn--green">&nbsp;</span>
+                    </label>
+
+                    <input type="radio" id="carousel__toggle--3" class="carousel__radio carousel__radio--3"
+                        name="carousel__pagination">
+                    <label for="carousel__toggle--3" class="carousel__label carousel__label--3">
+                        <span class="carousel__btn carousel__btn--3 btn--green">&nbsp;</span>
+                    </label>
+
+                    <span class="carousel__pagination carousel__pagination--1">&nbsp;</span>
+                    <span class="carousel__pagination carousel__pagination--2">&nbsp;</span>
+                    <span class="carousel__pagination carousel__pagination--3">&nbsp;</span>
+
+                    <div class="carousel__content">
+                        <div class="carousel__page carousel__page--1-of-3 carousel__page--1-of-3-a">
+                            <figure class="gallery__item">
+                                <img src="img//hotel-1.jpg" alt="Photo of hotel 1" class="gallery__photo">
+                                <figcaption class="gallery__caption">Something 1</figcaption>
+                            </figure>
+                        </div>
+                        <div class="carousel__page carousel__page--1-of-3 carousel__page--1-of-3-b">
+                            <figure class="gallery__item">
+                                <img src="img/hotel-2.jpg" alt="Photo of hotel 2" class="gallery__photo">
+                                <figcaption class="gallery__caption">Something 2</figcaption>
+                            </figure>
+                        </div>
+                        <div class="carousel__page carousel__page--1-of-3 carousel__page--1-of-3-c">
+                            <figure class="gallery__item">
+                                <img src="img/hotel-3.jpg" alt="Photo of hotel 3" class="gallery__photo">
+                                <figcaption class="gallery__caption">Something 3</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="overview">

@@ -8,6 +8,7 @@
   flex-flow: wrap;
   justify-content: center;
   align-items: center;
+  line-height: 1.5;
 
   @media only screen and (max-width: $bp-500) {
     flex-flow: column;
@@ -16,7 +17,7 @@
   &__item {
     position: relative;
     flex: 0 0 50%;
-    margin-bottom: 0.7rem;
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
 

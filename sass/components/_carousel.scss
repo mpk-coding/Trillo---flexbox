@@ -1,0 +1,493 @@
+/*| MIXINS |*/
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin cbs($property, $value) {
+  -webkit-#{$property}: #{$value};
+  -moz-#{$property}: #{$value};
+  -ms-#{$property}: #{$value};
+  -o-#{$property}: #{$value};
+  #{$property}: #{$value};
+}
+//--| MEDIA QUERY MANAGER
+/* INFO 
+
+0 - 600px     : Phone
+600 - 900px   : Tablet portrait
+900 - 1200px  : Tablet landscape
+12000 - 1800px: Desktop
+1800px +      : Big desktop
+
+$breakpoint argument choices:
+- mobile
+- portrait
+- landscape
+- whale
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+Breakpoints in rem units.
+1rem = 16px default.
+asdasd
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == "mobile" {
+    @media (max-width: 37.5rem) {
+      @content;
+    } // 600px / 16 = 37.5rem
+  }
+  @if $breakpoint == "portrait" {
+    @media (max-width: 56.25rem) {
+      @content;
+    } // 900px / 16 = 56.25rem
+  }
+  @if $breakpoint == "landscape" {
+    @media (max-width: 75rem) {
+      @content;
+    } // 1200px / 16 = 75rem
+  }
+  @if $breakpoint == "whale" {
+    @media (min-width: 112.5rem) {
+      @content;
+    } // 1800px / 16 = 112.5rem
+  }
+}
+
+// for font-size: 62.5% where 1rem = 10px
+
+//VARIABLES
+//SIZE
+
+$btn-diameter: 6rem;
+$btn-padding: 1rem;
+$btn-size: calc(#{$btn-diameter} + #{$btn-padding} * 2);
+
+//COLORS
+$color-primary: #eb2f64;
+
+/*| utilities */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+
+  @include respond(whale) {
+    // > 1800px
+    font-size: 112%; // 1rem = 18px, 18px / 16 = 75%
+  }
+
+  @include respond(landscape) {
+    // < 1200px
+    font-size: 50%; // 1rem = 8px, 8px / 16 = 50%
+  }
+
+  @include respond(portrait) {
+    // < 900px
+    font-size: 37.5%; // 1rem = 6px, 6px / 16 = 37.5%
+  }
+}
+
+.clearfix {
+  &:after {
+    content: "";
+    display: table;
+  }
+}
+
+.preload {
+  -webkit-transition: all 0s linear !important;
+  -moz-transition: all 0s linear !important;
+  -ms-transition: all 0s linear !important;
+  -o-transition: all 0s linear !important;
+  transition: all 0s linear !important;
+}
+
+/*| CAROUSEL |*/
+
+.carousel {
+  //@ $carousel-padding-left: any outside horizontal padding and margins have to be included in this variable.
+  $carousel-padding-left: 0rem;
+  padding-left: $carousel-padding-left;
+
+  //component background color
+  $bg-color: #f6f6f6;
+
+  //modify values of the variables in the equation below to change btn placement
+  //#1 btn outside slides
+  //$btn-placement: #{$btn-placement};
+
+  //#2 btn inside slides
+  $btn-placement: calc(#{$carousel-padding-left} + #{$btn-size} / 2);
+
+  //pagination and radio placements
+  $pgn-placement: calc(#{$carousel-padding-left} + #{$btn-padding});
+
+  //pages padding
+  $pg-padding: 0;
+
+  height: 95vh;
+  background-color: $bg-color;
+  position: relative;
+  overflow: hidden;
+
+  @media screen and (min-width: $bp-600) {
+    display: none;
+  }
+
+  //RADIO -- FUNCTIONALITY -- TOGGLE:CHECKED TO MODIFY SIBLING STYLES AND SWITCH SLIDES
+  &__radio {
+    display: inline-block;
+    visibility: hidden;
+    background-color: $color-primary;
+    width: $btn-diameter;
+    height: $btn-diameter;
+    border-radius: 50%;
+    position: absolute;
+    bottom: #{$pgn-placement};
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    pointer-events: all;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      background-color: $color-primary;
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      border-radius: 10rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 1;
+      transition: 0.25s ease-out;
+    }
+
+    &:checked {
+      outline: none;
+      &::after {
+        transform: scale(1.6);
+        opacity: 0;
+      }
+    }
+
+    // FUNCTIONALITY -- page sliding on radio:checked
+    &--1 {
+      left: calc(50% - 9rem);
+
+      &:checked ~ .carousel__content {
+        right: 0vw;
+      }
+
+      &:checked ~ .carousel__label--1 .carousel__btn {
+        transition: left 0s, right 0s,
+          opacity 0.25s cubic-bezier(0.8, 0.2, 0.8, 0.2) 0s,
+          width 0.25s cubic-bezier(0.8, 0.2, 0.8, 0.2) 0.25s,
+          padding 0.25s cubic-bezier(0.8, 0.2, 0.8, 0.2) 0.25s;
+        left: #{$btn-placement};
+        opacity: 0;
+        width: 0;
+        padding: 0;
+      }
+
+      &:checked ~ .carousel__label--2 .carousel__btn {
+        right: #{$btn-placement};
+        left: unset;
+        transition: all 0s;
+
+        &::after {
+          content: ">";
+          text-shadow: -1px 0px black;
+        }
+      }
+
+      &:checked ~ .carousel__label--3 .carousel__btn {
+        left: #{$btn-placement};
+        display: none;
+      }
+
+      &:checked ~ .carousel__pagination--1::after {
+        opacity: 1;
+      }
+
+      &:not(:checked) ~ .carousel__label--1 .carousel__btn {
+        left: #{$btn-placement};
+        z-index: 988;
+
+        &::after {
+          content: "<";
+          text-shadow: 1px 0px black;
+        }
+      }
+    }
+
+    &--2 {
+      &:checked ~ .carousel__content {
+        right: 100vw;
+      }
+
+      &:checked ~ .carousel__label--2 .carousel__btn {
+        left: #{$btn-placement};
+        z-index: 987;
+        opacity: 0;
+        transition: all 0s;
+      }
+
+      &:checked ~ .carousel__label--3 .carousel__btn {
+        right: #{$btn-placement};
+
+        &::after {
+          content: ">";
+          text-shadow: -1px 0px black;
+        }
+      }
+
+      &:checked ~ .carousel__pagination--2::after {
+        opacity: 1;
+      }
+    }
+
+    &--3 {
+      left: calc(50% + 9rem);
+
+      &:checked ~ .carousel__content {
+        right: 200vw;
+      }
+
+      &:checked ~ .carousel__label--3 .carousel__btn {
+        transition: left 0s, right 0s,
+          opacity 0.25s cubic-bezier(0.8, 0.2, 0.8, 0.2) 0s,
+          width 0.25s cubic-bezier(0.8, 0.2, 0.8, 0.2) 0.25s,
+          padding 0.25s cubic-bezier(0.8, 0.2, 0.8, 0.2) 0.25s;
+
+        width: 0;
+        padding: 0;
+        opacity: 0;
+      }
+
+      &:not(:checked) ~ .carousel__label--3 .carousel__btn {
+        right: #{$btn-placement};
+      }
+
+      &:checked ~ .carousel__pagination--3::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  //BUTTON -- RADIO LABELS TO INTERACT WITH AND SWITCH PAGES
+  &__btn {
+    width: $btn-diameter;
+    height: $btn-diameter;
+    padding: $btn-padding;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 999;
+    background-color: $color-primary;
+
+    transition: left 0s, right 0s, width 0s cubic-bezier(0.8, 0.2, 0.8, 0.2),
+      padding 0s cubic-bezier(0.8, 0.2, 0.8, 0.2),
+      opacity 0.25s cubic-bezier(0.8, 0.2, 0.8, 0.2) 0s;
+
+    @include cbs(user-select, none);
+
+    // EFFECTS
+    &::after {
+      content: "";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.5rem;
+      color: #fff;
+      background-color: unset;
+      top: 50%;
+      left: 50%;
+      line-height: 0;
+      transition: all 0.2s ease-out;
+    }
+
+    &:active,
+    &:focus {
+      outline: none;
+      transform: translateY(calc(-50% - 0.1rem));
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+      &::after {
+        opacity: 0;
+      }
+    }
+
+    // FUNCTIONALITY - RADIO:CHECKED STATE DEPENDANT
+    &--1 {
+      z-index: 990;
+
+      transition: left 0s, right 0s,
+        opacity 0.25s cubic-bezier(0.8, 0.2, 0.8, 0.2) 0s, width 0s, padding 0s;
+      left: #{$btn-placement};
+    }
+
+    &--2 {
+      left: #{$btn-placement};
+      z-index: 991;
+
+      &::after {
+        content: "<";
+        text-shadow: 1px 0px black;
+      }
+    }
+
+    &--3 {
+      right: #{$btn-placement};
+    }
+  }
+  //PAGINATION -- ACTIVE PAGE INDICATION
+  &__pagination {
+    display: inline-block;
+    background-color: transparent;
+    width: $btn-diameter;
+    height: $btn-diameter;
+    border-radius: 50%;
+    position: absolute;
+    bottom: #{$pgn-placement};
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    pointer-events: none;
+
+    @include cbs(user-select, none);
+
+    //inactive pages
+    &::before {
+      content: "";
+      display: inline-block;
+      background-color: $color-primary;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 999;
+      transition: all 0.25s cubic-bezier(0.8, 0.2, 0.8, 0.2);
+      opacity: 1;
+    }
+    //active page
+    &::after {
+      content: "";
+      display: inline-block;
+      background-color: $color-primary;
+      height: 100%;
+      width: 100%;
+      border-radius: 10rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0;
+      transition: all 0.2s ease-out;
+    }
+
+    &:active,
+    &:focus {
+      outline: none;
+      transform: translate(-50%, calc(-50% + 3rem));
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+      &::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+      }
+    }
+    //positioning
+    &--1 {
+      left: calc(50% - 9rem);
+    }
+
+    &--2 {
+    }
+
+    &--3 {
+      left: calc(50% + 9rem);
+    }
+  }
+
+  //PAGES CONTAINER
+  &__content {
+    display: flex;
+    width: 300vw;
+    height: 100%;
+
+    position: relative;
+    right: 0vw;
+
+    transition: all 0.25s cubic-bezier(0.8, 0.2, 0.8, 0.2);
+  }
+  //GENERAL PAGES -- SLIDES
+  &__page {
+    height: 100%;
+    flex: 0 0 calc(100% / 3);
+    padding: #{$pg-padding};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* FORMULA
+      page--x-of-y {
+      width: calc(((100% - 2y * #{$carousel-padding-left}) / y * x) + (x-1) * #{$carousel-padding-left});
+
+      where:
+        x = the individual page;
+        y = total number of pages;
+
+      EXAMPLE:
+
+      page--1-of-3 {
+         width: calc(((100% - 6 * #{$carousel-padding-left}) / 3);
+      }
+    */
+
+    width: calc(((100% - 6 * #{$carousel-padding-left}) / 3));
+
+    float: left;
+
+    &:not(:last-child) {
+      margin-right: calc(#{$carousel-padding-left} * 2);
+
+      @include respond(portrait) {
+      }
+    }
+
+    &--1-of-3 {
+      &-a {
+      }
+
+      &-b {
+      }
+
+      &-c {
+      }
+    }
+  }
+}

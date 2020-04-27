@@ -60,6 +60,47 @@
 }
 //------------------------------------------------------------
 
+.btn-logout {
+  font-size: inherit;
+  border: none;
+  font-weight: inherit;
+  text-transform: uppercase;
+  border-radius: 10rem;
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary-light),
+    var(--color-primary-dark)
+  );
+  color: #fff;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  padding: 1rem 2rem;
+
+  //////////////////////////////////////////////////////////////
+
+  &__text {
+    padding: 2rem 7.5rem;
+  }
+  //////////////////////////////////////////////////////////////
+
+  &:hover {
+    box-shadow: var(--shadow-dark);
+  }
+
+  //////////////////////////////////////////////////////////////
+
+  &:focus,
+  &:active {
+    outline: none;
+    animation: pulsate 1s infinite;
+  }
+}
+//------------------------------------------------------------
 .btn-inline {
   border: none;
   color: var(--color-primary);
